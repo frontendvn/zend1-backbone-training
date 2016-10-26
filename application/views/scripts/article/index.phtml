@@ -1,0 +1,25 @@
+
+    <form id="addArticle" action="" style="display:none">
+        Title:<input type="text" placeholder="Input Title"/><br>
+        Content:<textarea name="content" placeholder="Input Content"></textarea>
+        <input type="submit" value="Add">
+    </form>
+      <button>Add Article</button> 
+         <script>
+            $("button").click(function () {
+                $("form").show("slow");
+            });
+        </script>
+    <script id="articleTemplate" type="text/template">
+        <span><strong><%= title %></strong> && <%= content %></span> 
+        <button class="edit">Edit</button>
+        <button class="delete">Delete</button>
+    </script>
+<div id="article-listing-holder">Data is loading....</div>
+<?php 
+    echo $this->headScript()->appendFile($this->baseUrl().'/js/underscore.js');  
+    echo $this->headScript()->appendFile($this->baseUrl().'/js/jquery.js');  
+    echo $this->headScript()->appendFile($this->baseUrl().'/js/backbone.js');  
+    echo $this->headScript()->appendFile($this->baseUrl().'/js/main.js');  
+?>
+

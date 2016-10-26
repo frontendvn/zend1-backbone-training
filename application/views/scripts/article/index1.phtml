@@ -1,0 +1,38 @@
+<?php
+$this->headTitle("Article");
+?>
+    
+    <p>
+        <a href="<?php echo $this->url(array('controller' => 'article', 'action' => 'add')); ?>">Add a new Article</a>   
+    </p>
+    <table>
+        <tr> <th>Author</th>
+            <th>Title</th>
+            <th>Action</th>
+        </tr>
+        <?php
+        foreach ($this->articles as $values) {
+            ?>
+            <tr>
+                <td><?php echo $this->escape($values->title); ?></td>  
+                <td><?php echo $this->escape($values->content); ?></td>  
+                <td>
+                    <a href="<?php
+                    echo $this->url(array('controller' => 'article',
+                        'action' => 'edit', 'id' => $values->id));
+                    ?>">Edit</a>
+                    <a href="<?php
+                    echo $this->url(array('controller' => 'article',
+                        'action' => 'delete', 'id' => $values->id));
+                    ?>">Delete</a>
+                </td>  
+            </tr>
+
+            <?php
+        }
+        ?>
+    </table>
+    <form method="POST" name="search" action="<?php echo $this->url(array('controller' => 'article', 'action' => 'search')); ?>">
+        <input type="text" name="search"/>
+        <input type="submit" name="submit" value="Search" />
+    </form>
